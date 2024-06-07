@@ -1,0 +1,16 @@
+[
+    {
+        "datbase": "DEV_CZ",
+        "schema":"CHATMETER",
+        "object_type": "VIEW",
+        "object_name": "demo_view",
+        "enforcement_action": "merge",
+        "grantee": [
+            {
+                "ANALYST": [
+                    "SELECT"
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,70 @@
+[
+    {
+        "object_type": "DATABASE",
+        "enforcement_action": "merge",
+        "grantee": [
+            {
+                "DEVLOPER": [
+                    "CREATE SCHEMA"
+                ]
+            },
+            {
+                "ANALYST": [
+                    "CREATE SCHEMA"
+                ]
+            }
+        ]
+    },
+    {
+        "datbase": "DEV_CZ",
+        "object_type": "SCHEMA",
+        "enforcement_action": "merge",
+        "grantee": [
+            {
+                "DEVLOPER": [
+                    "CREATE TABLE",
+                    "CREATE VIEW",
+                    "MODIFY"
+                ]
+            },
+            {
+                "ANALYST": [
+                    "USAGE"
+                ]
+            }
+        ]
+    },
+    {
+        "datbase": "DEV_CZ",
+        "schema":"CHATMETER",
+        "object_type": "TABLE",
+        "enforcement_action": "merge",
+        "grantee": [
+            {
+                "DEVLOPER": [
+                    "INSERT",
+                    "UPDATE",
+                    "DELETE"
+                ]
+            },
+            {
+                "ANALYST": [
+                    "SELECT"
+                ]
+            }
+        ]
+    },
+    {
+        "datbase": "DEV_CZ",
+        "schema":"CHATMETER",
+        "object_type": "VIEW",
+        "enforcement_action": "merge",
+        "grantee": [
+            {
+                "ANALYST": [
+                    "SELECT"
+                ]
+            }
+        ]
+    }
+]
