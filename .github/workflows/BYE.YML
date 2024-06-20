@@ -1,7 +1,10 @@
-name: Second Job
+name: Second Workflow
 
 on:
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["First Workflow"]
+    types:
+      - completed
 
 jobs:
   second-job:
@@ -10,4 +13,3 @@ jobs:
     steps:
       - name: Print from Second Job
         run: echo "This is the second job."
-
