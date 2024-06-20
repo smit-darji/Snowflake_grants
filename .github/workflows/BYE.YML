@@ -1,14 +1,13 @@
-name: Bye World Workflow
+name: Second Job
 
 on:
-  workflow_run:
-    workflows: ["Hello World Workflow"]
-    types:
-      - completed
+  workflow_dispatch:
 
 jobs:
-  bye_world_job:
+  second-job:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Print Bye
-        run: echo "BYE"
+      - name: Print from Second Job
+        run: echo "This is the second job."
+
