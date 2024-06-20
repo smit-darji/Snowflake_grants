@@ -1,17 +1,26 @@
-name: Hello World Workflow
+name: First Job
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  hello_world_job:
+  first-job:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        
-      - name: Print Hello World
-        run: echo "HELLO WORLD"
-      
-      - name: Sleep for 1 minute
+      - name: Print HI
+        run: echo HI
+
+      - name: Wait for 1 minute
         run: sleep 60
+
+      - name: Trigger Second Job
+        run: |
+          curl -X POST \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/<username>/<repository>/actions/workflows/2.yml/dispatches \
+          -d '{"ref":"main"}'
 
