@@ -16,11 +16,4 @@ jobs:
       - name: Wait for 1 minute
         run: sleep 60
 
-      - name: Trigger Second Job
-        run: |
-          curl -X POST \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/smit-darji/Snowflake_grants/actions/workflows/BYE.YML/dispatches \
-          -d '{"ref":"main"}'
 
