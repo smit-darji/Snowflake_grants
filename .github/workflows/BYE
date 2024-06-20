@@ -1,0 +1,14 @@
+name: Bye World Workflow
+
+on:
+  workflow_run:
+    workflows: ["Hello World Workflow"]
+    types:
+      - completed
+
+jobs:
+  bye_world_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Bye
+        run: echo "BYE"
