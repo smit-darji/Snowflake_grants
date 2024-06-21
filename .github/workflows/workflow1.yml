@@ -18,15 +18,4 @@ jobs:
 
       # Add a 60-second wait time
       - name: Wait for 60 seconds
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-            await delay(60000);
-
-      # Trigger Workflow 2
-      - name: Trigger Workflow 2
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          event-type: trigger-workflow-2
+        run: sleep 60
