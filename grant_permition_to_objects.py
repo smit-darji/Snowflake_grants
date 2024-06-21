@@ -95,6 +95,7 @@ def get_recently_created_objects(connection, object_type, config):
         return []
 
 
+
 # Function to compare created tables/views with configuration
 def compare_objects_with_config(config, created_objects, object_type):
     try:
