@@ -3,7 +3,7 @@ name: Workflow 1
 on:
   push:
     branches:
-      - main
+      - Master
 
 jobs:
   build:
@@ -15,6 +15,14 @@ jobs:
       # Add your build steps here
       - name: Run build
         run: echo "Running build for Workflow 1"
+
+      # Add a 60-second wait time
+      - name: Wait for 60 seconds
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+            await delay(60000);
 
       # Trigger Workflow 2
       - name: Trigger Workflow 2
