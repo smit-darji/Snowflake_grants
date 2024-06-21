@@ -1,0 +1,24 @@
+name: Workflow 1
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Add your build steps here
+      - name: Run build
+        run: echo "Running build for Workflow 1"
+
+      # Trigger Workflow 2
+      - name: Trigger Workflow 2
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: trigger-workflow-2
