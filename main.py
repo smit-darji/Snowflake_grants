@@ -1,19 +1,24 @@
 import psutil
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import time
 
-def get_max_thread_count():
-    return psutil.cpu_count(logical=True)
+# Function to simulate work (replace with your actual task)
+def test_worker(worker_id):
+    time.sleep(1)  # Simulate some work with a delay
+    return worker_id
+
+# Function to get the maximum number of threads you can use effectively
+def get_max_workers():
+    # Get the number of logical CPUs
+    logical_cpus = psutil.cpu_count(logical=True)
+    print(f"Number of logical CPUs: {logical_cpus}")
+
+    # Set max_workers based on the number of CPUs
+    max_workers = min(logical_cpus, 32)  # Cap it at 32 for this example
+    return max_workers
 
 def main():
-    max_threads = get_max_thread_count()
-    print(f"Maximum number of threads supported by system: {max_threads}")
-
-    # Create a ThreadPoolExecutor with the determined number of workers
-    with ThreadPoolExecutor(max_workers=max_threads) as executor:
-        # Example task submission and processing
-        futures = [executor.submit(lambda x: x * x, i) for i in range(10)]
-        results = [future.result() for future in futures]
-        print("Results:", results)
+    max_workers = get_max_workers()
 
 if __name__ == "__main__":
     main()
