@@ -23,6 +23,8 @@ jobs:
 
     - name: Run Python script
       run: |
+        pip install psutil
+
         python main.py
         # Replace with the path to your Python script
 
