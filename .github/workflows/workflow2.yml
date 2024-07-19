@@ -1,14 +1,20 @@
 name: Workflow 2
 
-on: [push]
+on:
+  push:
+    branches:
+      - Master  # Trigger workflow on push to master branch
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    runs-on: ubuntu-latest  # Use the latest available Ubuntu runner
 
-      # Add your build steps here
-      - name: Run build
-        run: cat /proc/cpuinfo | grep 'cpu core'
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Add your build steps here
+    - name: Run build
+      run: |
+        echo "CPU Information:"
+        cat /proc/cpuinfo | grep 'cpu core'
