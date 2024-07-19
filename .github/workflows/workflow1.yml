@@ -1,22 +1,28 @@
-name: Workflow 1
+name: Run Python Script
 
 on:
   push:
     branches:
       - Master
+  pull_request:
+    branches:
+      - Master
 
 jobs:
-  build:
+  run-script:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      # Add your build steps here
-      - name: Run build
-        run: echo "Running build for Workflow 1"
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Replace with the version of Python you need
 
-      # Add a 60-second wait time
-      - name: Wait for 60 seconds
-        run: sleep 60
+    - name: Run Python script
+      run: |
+        python main.py
+        # Replace with the path to your Python script
 
