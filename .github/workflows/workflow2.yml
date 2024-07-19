@@ -1,10 +1,6 @@
 name: Workflow 2
 
-on:
-  workflow_run:
-    workflows: ["Workflow 1"]
-    types:
-      - completed
+on: [push]
 
 jobs:
   build:
@@ -15,4 +11,4 @@ jobs:
 
       # Add your build steps here
       - name: Run build
-        run: echo "Running build for Workflow 2"
+        run: cat /proc/cpuinfo | grep 'cpu core'
