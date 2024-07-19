@@ -9,22 +9,22 @@ on:
       - Master
 
 jobs:
-  run-script:
-    runs-on: ubuntu-latest
-
+  build:
+    runs-on: [self-hosted, high-cpu-x64]  
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.x'  # Replace with the version of Python you need
+        python-version: '3.x'
 
-    - name: Run Python script
+    - name: Install dependencies
       run: |
         pip install psutil
 
+    - name: Run script
+      run: |
         python main.py
-        # Replace with the path to your Python script
 
